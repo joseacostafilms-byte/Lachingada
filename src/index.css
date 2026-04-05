@@ -4,11 +4,14 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", sans-serif;
   
-  --color-mexican-pink: #FF00FF; /* Fuchsia */
-  --color-mexican-green: #00FF00; /* Green */
-  --color-mexican-blue: #0000FF; /* Blue */
-  --color-mexican-orange: #FF9800;
-  --color-mexican-teal: #00BCD4;
+  --color-mexican-pink: #D81B60;
+  --color-mexican-orange: #F57C00;
+  --color-mexican-yellow: #FDD835;
+  --color-mexican-blue: #00B0FF;
+  --color-mexican-green: #76FF03;
+  --color-mexican-red: #D32F2F;
+  --color-mexican-purple: #7B1FA2;
+  --color-mexican-teal: #00BFA5;
 }
 
 @layer base {
@@ -24,7 +27,7 @@
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+    text-shadow: 0 0 10px rgba(216, 27, 96, 0.5);
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
