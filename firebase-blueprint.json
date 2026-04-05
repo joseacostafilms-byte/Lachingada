@@ -1,0 +1,72 @@
+{
+  "entities": {
+    "Customer": {
+      "title": "Customer",
+      "description": "A customer of the restaurant.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the customer." },
+        "phone": { "type": "string", "description": "Phone number for identification." },
+        "email": { "type": "string", "format": "email", "description": "Email address for notifications." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the customer first registered." }
+      },
+      "required": ["name", "phone", "email"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A single order placed by a customer.",
+      "type": "object",
+      "properties": {
+        "customerUid": { "type": "string", "description": "Reference to the customer." },
+        "tableNumber": { "type": "string", "description": "The table where the order was placed." },
+        "items": { "type": "array", "items": { "type": "object" }, "description": "List of items ordered." },
+        "totalAmount": { "type": "number", "description": "Total price of this order." },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the order was placed." },
+        "date": { "type": "string", "description": "The date of the order (YYYY-MM-DD)." }
+      },
+      "required": ["customerUid", "tableNumber", "items", "totalAmount", "timestamp", "date"]
+    },
+    "DailyAccount": {
+      "title": "Daily Account",
+      "description": "Summary of all orders for a customer on a specific day.",
+      "type": "object",
+      "properties": {
+        "customerUid": { "type": "string", "description": "Reference to the customer." },
+        "date": { "type": "string", "description": "The date (YYYY-MM-DD)." },
+        "totalAmount": { "type": "number", "description": "Sum of all order totals for this day." },
+        "orderIds": { "type": "array", "items": { "type": "string" }, "description": "List of order IDs." }
+      },
+      "required": ["customerUid", "date", "totalAmount", "orderIds"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "An administrative user with specific hierarchy levels.",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string", "description": "Unique username for login." },
+        "password": { "type": "string", "description": "Hashed or plain password (for this demo)." },
+        "level": { "type": "integer", "enum": [1, 2, 3], "description": "Hierarchy level (1: Super, 2: Editor, 3: Viewer)." },
+        "name": { "type": "string", "description": "Display name of the admin." }
+      },
+      "required": ["username", "password", "level"]
+    }
+  },
+  "firestore": {
+    "/customers/{customerUid}": {
+      "schema": "Customer",
+      "description": "Customer profiles indexed by their UID or phone hash."
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Individual orders placed by customers."
+    },
+    "/dailyAccounts/{accountId}": {
+      "schema": "DailyAccount",
+      "description": "Daily summaries for customers."
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Administrative users."
+    }
+  }
+}
