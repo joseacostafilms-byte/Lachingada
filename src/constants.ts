@@ -5,6 +5,7 @@ export interface MenuItem {
   price: number;
   category: string;
   image?: string;
+  video?: string;
 }
 
 export const MENU_DATA: MenuItem[] = [
@@ -122,10 +123,10 @@ export const CATEGORIES = [
   'Club House',
   'Pizzas',
   'Parrillas',
-  'Tragos'
+  'Tragos',
+  'Bebidas',
+  'Combos'
 ];
-
-export const RESTAURANT_WHATSAPP = "584142314194";
 
 export const PROMOS = [
   { id: 'p1', image: 'https://picsum.photos/seed/mexican1/800/400', title: '2x1 en Tacos los Martes' },
